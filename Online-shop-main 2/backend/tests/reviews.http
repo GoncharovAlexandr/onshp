@@ -1,0 +1,30 @@
+### Создание отзыва (пользователь)
+POST {{$dotenv BASE_URL}}/reviews/?session_id={{$dotenv SESSION_ID_USER}}
+Content-Type: application/json
+
+{
+  "product_id": 7,
+  "rating": 5,
+  "comment": "Отличный товар!"
+}
+
+###
+
+### Обновление отзыва (пользователь)
+PUT {{$dotenv BASE_URL}}/reviews/1?session_id={{$dotenv SESSION_ID_USER}}
+Content-Type: application/json
+
+{
+  "rating": 4,
+  "comment": "На самом деле просто хороший товар"
+}
+
+###
+
+### Удаление отзыва (пользователь)
+DELETE {{$dotenv BASE_URL}}/reviews/1?session_id={{$dotenv SESSION_ID_USER}}
+
+###
+
+### Удаление отзыва админом
+DELETE {{$dotenv BASE_URL}}/reviews/admin/2?session_id={{$dotenv SESSION_ID_ADMIN}}

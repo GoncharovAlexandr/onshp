@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Профиль - Мой Магазин{% endblock %}
+
+{% block content %}
+<div class="container mx-auto p-4">
+    <h2 class="text-2xl font-semibold mb-6">Ваш профиль</h2>
+    
+    {% if is_authenticated %}
+    <div class="bg-white p-6 rounded-lg shadow-md max-w-md">
+        <h3 class="text-lg font-semibold mb-4">Текущие данные</h3>
+        <p><strong>Имя:</strong> {{ profile.name }}</p>
+        <p><strong>Email:</strong> {{ profile.email }}</p>
+        <p><strong>Биография:</strong> {{ profile.bio or 'Не указано' }}</p>
+    </div>
+
+    <div class="mt-6 max-w-md">
+        <h3 class="text-lg font-semibold mb-4">Редактировать профиль</h3>
+        <form action="/profile" method="post" class="space-y-4" onsubmit="logFormData(event)">
+            <div>
+                <label for="name" class="block text-gray-700">Имя</label>
+                <input type="text" id="name" name="name" value="{{ profile.name }}" required class="w-full p-2 border rounded">
+            </div>
+            <div>
+                <label for="email" class="block text-gray-700">Email</label>
+                <input type="email" id="email" name="email" value="{{ profile.email }}" required class="w-full p-2 border rounded">
+            </div>
+            <div>
+                <label for="bio" class="block text-gray-700">Биография</label>
+                <textarea id="bio" name="bio" class="w-full p-2 border rounded" rows="4">{{ profile.bio or '' }}</textarea>
+            </div>
+            <button type="submit" class="btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Сохранить</button>
+            <a href="/categories/html" class="btn bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700">Назад</a>
+        </form>
+    </div>
+
+    <script>
+        function logFormData(event) {
+            const formData = new FormData(event.target);
+            console.log('Form data:', Object.fromEntries(formData));
+        }
+    </script>
+    {% else %}
+    <p class="text-gray-600">Пожалуйста, войдите, чтобы просмотреть профиль.</p>
+    {% endif %}
+</div>
+{% endblock %}

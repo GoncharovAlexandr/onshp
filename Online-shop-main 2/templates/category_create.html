@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Создать категорию - Мой Магазин{% endblock %}
+
+{% block content %}
+<div class="container mx-auto p-4">
+    <h2 class="text-2xl font-semibold mb-6">Создать категорию</h2>
+    <form action="/categories" method="post" class="max-w-md">
+        <div class="mb-4">
+            <label for="name" class="block text-gray-700">Название категории</label>
+            <input type="text" id="name" name="name" required class="w-full p-2 border rounded">
+        </div>
+        <div class="mb-4">
+            <label for="description" class="block text-gray-700">Описание</label>
+            <textarea id="description" name="description" class="w-full p-2 border rounded" rows="4"></textarea>
+        </div>
+        <button type="submit" class="btn bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">Создать</button>
+        <a href="/categories/html" class="btn bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700">Отмена</a>
+    </form>
+</div>
+{% endblock %}

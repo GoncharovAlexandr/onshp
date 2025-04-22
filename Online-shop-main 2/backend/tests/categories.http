@@ -1,0 +1,56 @@
+### Получить все категории
+GET {{$dotenv BASE_URL}}/categories/
+Accept: application/json
+
+###
+
+### Получить категорию по ID
+GET {{$dotenv BASE_URL}}/categories/1
+Accept: application/json
+
+###
+
+### Создать категорию (только админ)
+POST {{$dotenv BASE_URL}}/categories/?session_id={{$dotenv SESSION_ID_ADMIN}}
+Content-Type: application/json
+
+{
+  "name": "iPhone",
+  "description": "Категория смартфонов Apple"
+}
+
+###
+
+POST {{$dotenv BASE_URL}}/categories/?session_id={{$dotenv SESSION_ID_ADMIN}}
+Content-Type: application/json
+
+{
+  "name": "Samsung",
+  "description": "Категория смартфонов Samsung"
+}
+
+###
+
+POST {{$dotenv BASE_URL}}/categories/?session_id={{$dotenv SESSION_ID_ADMIN}}
+Content-Type: application/json
+
+{
+  "name": "Прочее",
+  "description": "Все остальное"
+}
+
+###
+
+### Обновить категорию
+PUT {{$dotenv BASE_URL}}/categories/1?session_id={{$dotenv SESSION_ID_ADMIN}}
+Content-Type: application/json
+
+{
+  "name": "iPhone",
+  "description": "Обновленное описание"
+}
+
+###
+
+### Удалить категорию
+DELETE {{$dotenv BASE_URL}}/categories/1?session_id={{$dotenv SESSION_ID_ADMIN}}

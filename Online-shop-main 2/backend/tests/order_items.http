@@ -1,0 +1,38 @@
+### Получить все позиции заказа
+GET {{$dotenv BASE_URL}}/order-items/
+Accept: application/json
+
+###
+
+### Получить одну позицию заказа
+GET {{$dotenv BASE_URL}}/order-items/1
+Accept: application/json
+
+###
+
+### Создать новую позицию заказа
+POST {{$dotenv BASE_URL}}/order-items/
+Content-Type: application/json
+
+{
+  "order_id": 1,
+  "product_id": 1,
+  "quantity": 2,
+  "price": 499.99
+}
+
+###
+
+### Обновить позицию заказа (полностью)
+PUT {{$dotenv BASE_URL}}/order-items/1
+Content-Type: application/json
+
+{
+  "quantity": 3,
+  "price": 459.99
+}
+
+###
+
+### Удалить позицию заказа
+DELETE {{$dotenv BASE_URL}}/order-items/1

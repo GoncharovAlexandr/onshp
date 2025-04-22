@@ -1,0 +1,19 @@
+### Регистрация админа
+POST {{$dotenv BASE_URL}}/admin/auth/register
+Content-Type: application/json
+
+{
+  "email": "admin@example.com",
+  "password": "adminpass123"
+}
+
+###
+
+### Авторизация админа
+POST {{$dotenv BASE_URL}}/admin/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@example.com",
+  "password": "adminpass123"
+}

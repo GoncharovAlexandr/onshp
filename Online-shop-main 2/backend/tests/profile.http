@@ -1,0 +1,35 @@
+### Получить профиль
+GET {{$dotenv BASE_URL}}/user/me/profile?session_id={{$dotenv SESSION_ID_USER}}
+
+###
+
+### Обновить предпочтения
+PUT {{$dotenv BASE_URL}}/user/me/profile?session_id={{$dotenv SESSION_ID_USER}}
+Content-Type: application/json
+
+{
+  "preferences": {
+    "color": "black",
+    "budget": [500, 1500]
+  }
+}
+
+###
+
+### Добавить товар в wishlist
+POST {{$dotenv BASE_URL}}/user/me/wishlist/1?session_id={{$dotenv SESSION_ID_USER}}
+
+###
+
+### Удалить товар из wishlist
+DELETE {{$dotenv BASE_URL}}/user/me/wishlist/1?session_id={{$dotenv SESSION_ID_USER}}
+
+###
+
+### Добавить просмотренный товар
+POST {{$dotenv BASE_URL}}/user/me/recent/2?session_id={{$dotenv SESSION_ID_USER}}
+
+###
+
+### Получить товары из wishlist
+GET {{$dotenv BASE_URL}}/user/me/wishlist/products?session_id={{$dotenv SESSION_ID_USER}}

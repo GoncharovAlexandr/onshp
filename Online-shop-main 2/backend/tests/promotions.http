@@ -1,0 +1,27 @@
+### Получить все акции
+GET {{$dotenv BASE_URL}}/promotions/
+Accept: application/json
+
+###
+
+### Создать акцию
+POST {{$dotenv BASE_URL}}/promotions/
+Content-Type: application/json
+
+{
+  "name": "Весенняя распродажа",
+  "description": "Скидка 20% на iPhone",
+  "discount": 0.2,
+  "products": [1, 2]
+}
+
+###
+
+### Получить акцию по ID
+GET {{$dotenv BASE_URL}}/promotions/PASTE_PROMO_ID_HERE
+Accept: application/json
+
+###
+
+### Удалить акцию
+DELETE {{$dotenv BASE_URL}}/promotions/PASTE_PROMO_ID_HERE

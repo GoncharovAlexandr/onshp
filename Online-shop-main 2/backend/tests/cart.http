@@ -1,0 +1,31 @@
+### Получить корзину
+GET {{$dotenv BASE_URL}}/cart?session_id={{$dotenv SESSION_ID_USER}}
+
+###
+
+### Добавить товар в корзину
+POST {{$dotenv BASE_URL}}/cart/add?session_id={{$dotenv SESSION_ID_USER}}
+Content-Type: application/json
+
+{
+  "product_id": 1,
+  "quantity": 2,
+  "price": 799.99
+}
+
+###
+
+### Удалить товар из корзины
+POST {{$dotenv BASE_URL}}/cart/remove?session_id={{$dotenv SESSION_ID_USER}}
+Content-Type: application/json
+
+{
+  "product_id": 1,
+  "quantity": 2,
+  "price": 799.99
+}
+
+###
+
+### Очистить корзину
+POST {{$dotenv BASE_URL}}/cart/clear?session_id={{$dotenv SESSION_ID_USER}}

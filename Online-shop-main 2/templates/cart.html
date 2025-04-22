@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Корзина - Мой Магазин{% endblock %}
+
+{% block content %}
+    <h2 class="text-2xl font-semibold mb-6">Ваша корзина</h2>
+    {% if cart_items %}
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+            {% for item in cart_items %}
+                <div class="flex items-center justify-between py-4 border-b last:border-b-0">
+                    <div class="flex items-center">
+                        <img src="{{ item.product.image or 'https://via.placeholder.com/100x100?text=' + item.product.name }}" alt="{{ item.product.name }}" class="w-16 h-16 rounded-lg mr-4">
+                        <div>
+                            <h3 class="text-lg font-semibold">{{ item.product.name }}</h3>
+                            <p class="text-gray-600">{{ item.product.price }} ₽</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <!-- Форма для изменения количества -->
+                        <form action="/cart/add/html" method="POST" class="flex items-center">
+                            <input type="hidden" name="product_id" value="{{ item.product.id }}">
+                            <input type="number" name="quantity" value="{{ item.quantity }}" min="1" max="{{ item.product.stock_quantity }}" class="w-16 p-1 border rounded mr-2">
+                            <button type="submit" class="text-blue-600 hover:underline">Обновить</button>
+                        </form>
+                        <p class="text-lg font-semibold">{{ item.product.price * item.quantity }} ₽</p>
+                        <!-- Форма для удаления -->
+                        <form action="/cart/remove/html" method="POST">
+                            <input type="hidden" name="product_id" value="{{ item.product.id }}">
+                            <button type="submit" class="text-red-600 hover:underline">Удалить</button>
+                        </form>
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="mt-6 flex justify-between items-center">
+                <h3 class="text-xl font-semibold">Итого: {{ total }} ₽</h3>
+                <form action="/cart/clear" method="POST">
+                    <button type="submit" class="btn bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700">Очистить корзину</button>
+                </form>
+            </div>
+        </div>
+        <a href="/products/html" class="btn bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">Продолжить покупки</a>
+    {% else %}
+        <p class="text-gray-600">Ваша корзина пуста.</p>
+        <a href="/products/html" class="btn mt-4 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">Перейти к товарам</a>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,63 @@
+### Получить список всех продуктов
+GET {{$dotenv BASE_URL}}/products/
+Accept: application/json
+
+###
+
+### Получить продукт по ID
+GET {{$dotenv BASE_URL}}/products/1
+Accept: application/json
+
+###
+
+### Создать новый продукт (только для админа)
+POST {{$dotenv BASE_URL}}/products/?session_id={{$dotenv SESSION_ID_ADMIN}}
+Content-Type: application/json
+
+{
+  "name": "iPhone 15 PRO",
+  "price": 1199.99,
+  "category_id": 2,
+  "stock_quantity": 100,
+  "image": "https://example.com/iphone15.png",
+  "description": "Новый iPhone 15",
+  "attributes": {
+    "color": "Black",
+    "storage": "256GB"
+  }
+}
+
+###
+
+### PUT: Обновить товар (полное обновление)
+PUT {{$dotenv BASE_URL}}/products/1?session_id={{$dotenv SESSION_ID_ADMIN}}
+Content-Type: application/json
+
+{
+  "name": "iPhone 15",
+  "price": 1199.99,
+  "category_id": 2,
+  "stock_quantity": 100,
+  "image": "https://example.com/iphone15.png",
+  "description": "Новый iPhone 15",
+  "attributes": {
+    "color": "Black",
+    "storage": "256GB"
+  }
+}
+
+###
+
+### PATCH: Частичное обновление товара
+PATCH {{$dotenv BASE_URL}}/products/1?session_id={{$dotenv SESSION_ID_ADMIN}}
+Content-Type: application/json
+
+{
+  "price": 1099.99,
+  "stock_quantity": 80
+}
+
+###
+
+### DELETE: Удалить товар
+DELETE {{$dotenv BASE_URL}}/products/1?session_id={{$dotenv SESSION_ID_ADMIN}}
